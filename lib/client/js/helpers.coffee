@@ -145,3 +145,9 @@ UI.registerHelper 'adminUserEmail', (user) ->
 		user.services.facebook.email
 	else if user && user.services && user.services.google && user.services.google.email
 		user.services.google.email
+
+UI.registerHelper 'adminCampaignsCount', (id)->
+	Campaigns.find({user_id : id}).fetch().length
+
+UI.registerHelper 'adminCampaignsSent', (id)->
+	Sharings.find({sender_id : id}).fetch().length
